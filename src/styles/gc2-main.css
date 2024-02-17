@@ -7,10 +7,6 @@
   gap: 10px;
 }
 
-#specific-graphic-data-container{
-  border: 1px solid red;
-  width: 100%;
-}
 #specific-data-box-container{
   display: flex;
   gap: 10px;
@@ -20,13 +16,14 @@
   width: 100%;
   background-color: #0008;
   border-radius: 10px;
-  box-sizing: border-box;
   height: 100px;
   box-sizing: border-box;
   padding: 10px;
   cursor: pointer;
   transition-duration: 150ms;
   color: #fff8;
+  display: flex;
+  flex-direction: column;
 }
 .specific-data-box:hover, .activated {
   transform: scale(1.05);
@@ -35,6 +32,9 @@
 }
 .specific-data-box:hover > .specific-data-img-container img{
   filter: brightness(100%);
+}
+.specific-data-name-holder{
+  max-width: 150%;
 }
 .specific-data-box div{
   display: flex;
@@ -46,7 +46,8 @@
 .specific-data-data{
   font-size: 25px;
   flex-grow: 1;
-
+  margin: 0;
+  /* padding: 5px; */
 }
 .specific-data-img-container{
   filter:invert(1) brightness(50%);
@@ -67,7 +68,7 @@
 }
 
 
-
+/* Graph styles */
 #gc2-graph-container{
   flex-grow: 1;
   display: flex;
@@ -109,6 +110,39 @@
 #reload-img-container img{
   filter:invert(1) brightness(50%);
   width: 100%;
+}
+
+
+@media only screen and (max-width: 650px) {
+  
+  #specific-data-box-container{
+    gap: 5px;
+  }
+  .specific-data-box{
+    min-width: 18vw;
+    border-radius: 30px;
+    height: auto;
+    padding: 15px 5px 15px 10px;
+  }
+  .specific-data-name-holder{
+    font-size: 12px;
+  }
+  .specific-data-box div{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: fit-content;
+    gap: 0px;
+  }
+  .specific-data-img-container{
+    min-width: 25px;
+  }
+  .specific-data-footer{
+    align-self: flex-end;
+    margin-bottom: 5px;
+    font-size: 12px;
+    text-align: left;
+  }
 }
 
 

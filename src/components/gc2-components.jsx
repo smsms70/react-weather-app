@@ -46,8 +46,8 @@ export function Gc2Main ({data, temp_f, dayForecastIndex}) {
             data.forecast.forecastday[dayForecastIndex].day.maxwind_kph
           }
           img= {"../../icons/wind.png"}
-          footer= {"mp/h"}
-          footer2= {"km/h"}
+          footer= {"Mh"}
+          footer2= {"Kh"}
           temp_f= {temp_f}
           func= {selectwindHandler}
           activated= {selection == "wind"}
@@ -86,9 +86,9 @@ export function Gc2Main ({data, temp_f, dayForecastIndex}) {
 export function DataBox ({name, data, data2, img, footer, footer2, func, activated, temp_f = false}) {
   return(
     <div className={`specific-data-box ${activated ? "activated" : ""}`} onClick={func}>
-      <span>{name} </span>
+      <span className="specific-data-name-holder">{name} </span>
       <div>
-        <p className="specific-data-data">{!data2 ? data : temp_f ? data : data2}</p>
+        <p className="specific-data-data">{Math.floor(!data2 ? data : temp_f ? data : data2)}</p>
         <span className="specific-data-img-container">
           <img src={img} alt=""/>
         </span>

@@ -95,5 +95,45 @@
   left: auto;
   transform: translate(0px, -40px);
   box-shadow: 0 0 10px 2px #fff1;
+}
 
+@media only screen and (max-width: 650px) {
+  #gc1-container-temp{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-left: 5px;
+    justify-content: space-evenly;
+  }
+  #gc1-header-img-container{
+    width: 30vw;
+  }
+  #gc1-header-img-container img{
+    width: 100%;
+    max-width: none;
+  }
+  #gc1-container-temp h3 {
+    font-size: 25px;
+
+  }
+  #gc1-temperature-letters-container{
+    min-width: 100px;
+    width: fit-content;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+  
+  }
+  #gc1-temperature, #gc1-temperature-letter{
+    font-size: 45px;
+  }
+  #gc1-temperature-letter{
+    color: #fff5;
+    box-shadow: none;
+    cursor: pointer;
+  
+  }
+  #gc5-svg-map-container svg{
+    transform: translate(0px, 0px);
+  }
 }

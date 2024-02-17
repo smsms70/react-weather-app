@@ -10,7 +10,7 @@ export default function BodyComponent () {
   const [justDays, setJustDays] = useState(false);
   const [dayForecastIndex, setDayForecastIndex] = useState(0);
   const [countryCode, setCountryCode] = useState("");
-  const [data, loading] = useFetch(location, forecastDays, justDays, setJustDays);
+  const [data, loading] = useFetch(location, forecastDays, justDays, setJustDays, setDayForecastIndex);
 
   const currentDay = (data && data.current ? new Date(data.current.last_updated) : null);
 

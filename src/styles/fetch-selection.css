@@ -23,10 +23,13 @@
 #search-bar-container{
   position: absolute;
   display: flex;
-  width: 50%;
+  width: 60%;
   align-items: center;
   gap: 5px;
   z-index: 100;
+}
+#search-bar-bar{
+  width: 70%;
 }
 #search-bar-button{
   width: 25px;

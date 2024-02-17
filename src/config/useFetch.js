@@ -1,7 +1,7 @@
 import {useState, useEffect } from 'react';
 import axios from "axios";
 
-export function useFetch (location, days, justDays, setJustDays) {
+export function useFetch (location, days, justDays, setJustDays, setDayForecastIndex) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   
@@ -25,6 +25,7 @@ export function useFetch (location, days, justDays, setJustDays) {
         console.log(err)
       })
       .finally(() => {
+        setDayForecastIndex(0)
         setLoading(false);
         setJustDays(false);
       });
