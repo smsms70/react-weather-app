@@ -1,0 +1,52 @@
+#forecast-days-selection-container{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding-left: 5px;
+}
+#forecast-text{
+  font-size: 20px;
+}
+#forecast_selection{
+  border-radius: 10px;
+  border-color: #575757;
+  color: #aaa;
+  background-color: #070707;
+  padding: 2px 0px 2px 10px;
+  transition-duration: 200ms;
+  cursor: pointer;
+}
+#forecast_selection:hover{
+  background-color: #000;
+}
+
+#search-bar-container{
+  position: absolute;
+  display: flex;
+  width: 50%;
+  align-items: center;
+  gap: 5px;
+  z-index: 100;
+}
+#search-bar-button{
+  width: 25px;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #010101;
+  transition-duration: 100ms;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  border-radius: 4px;
+}
+#search-bar-button:hover{
+  background-color: #333;
+  transform: scale(1.1);
+}
+#search-bar-button img{
+  width: 100%;
+  filter:invert(1) brightness(50%);
+}
+
+

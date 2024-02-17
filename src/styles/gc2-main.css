@@ -1,0 +1,118 @@
+#gc2-main-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 250px;
+  gap: 10px;
+}
+
+#specific-graphic-data-container{
+  border: 1px solid red;
+  width: 100%;
+}
+#specific-data-box-container{
+  display: flex;
+  gap: 10px;
+}
+.specific-data-box{
+  max-width: 200px;
+  width: 100%;
+  background-color: #0008;
+  border-radius: 10px;
+  box-sizing: border-box;
+  height: 100px;
+  box-sizing: border-box;
+  padding: 10px;
+  cursor: pointer;
+  transition-duration: 150ms;
+  color: #fff8;
+}
+.specific-data-box:hover, .activated {
+  transform: scale(1.05);
+  box-shadow: 0px 0px 2px 1px #fff1;
+  color: #fff;
+}
+.specific-data-box:hover > .specific-data-img-container img{
+  filter: brightness(100%);
+}
+.specific-data-box div{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 70px;
+  gap: 5px;
+}
+.specific-data-data{
+  font-size: 25px;
+  flex-grow: 1;
+
+}
+.specific-data-img-container{
+  filter:invert(1) brightness(50%);
+  max-width: 35px;
+  flex-grow: 1;
+}
+.specific-data-img-container img{
+  width: 100%;
+}
+
+.specific-data-footer{
+  align-self: flex-end;
+  margin-bottom: 5px;
+  font-size: 12px;
+  color: #fff5;
+  flex-grow: 1;
+  text-align: right;
+}
+
+
+
+#gc2-graph-container{
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  position: relative;
+}
+#rules-container-gc2{
+  border-radius: 15px;
+  background-color: #0008;
+  display: flex;
+  align-items: end;
+  width: 100%;
+  justify-content: space-evenly;
+  padding-top: 20px;
+}
+.ruler-from-gc2-graph{
+  width: 8px;
+  background-color: grey;
+  margin: 0 5px;
+  border-radius: 5px;
+}
+#reload-img-container{
+  position: absolute;
+  width: 30px;
+  max-width: 35px;
+  right: 5px;
+  top: 5px;
+  cursor: pointer;
+  background-color: #222;
+  padding: 5px;
+  border-radius: 10px;
+  display: grid;
+  place-content: center;
+}
+#reload-img-container:hover{
+  transform: scale(1.05);
+}
+#reload-img-container img{
+  filter:invert(1) brightness(50%);
+  width: 100%;
+}
+
+
+.hidden{
+  display: none;
+  visibility: hidden;
+}
