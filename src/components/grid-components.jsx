@@ -1,18 +1,19 @@
 import { ForecastDay } from "./forecast-days.jsx";
 import { ForecastSelection, SearchBar } from "./fetchSelections.jsx";
 import { Gc2Main } from "./gc2-components.jsx";
+import { useDate } from "../config/useDate.js";
 import WorldMap from "react-svg-worldmap";
 import "../styles/grid-components.css";
 
-const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
 
-export function GridContent1 ({data, day, dayForecastIndex, temp, func_f, func_c}) {
-
+export function GridContent1 ({data, dayForecastIndex, temp, setTemp_f}) {
   return (
     handleData(data, () => {
-
-      const currentDay = weekday[day.getDay()];
+      const temp_fHandler = () => setTemp_f(true);
+      const temp_cHandler = () => setTemp_f(false);
+      const date = new Date(!dayForecastIndex ? data.location.localtime : data.forecast.forecastday[dayForecastIndex].date)
+      const formatDate = useDate(date)
       return(
         <>
           <div id="gc1-container-temp">
@@ -28,9 +29,9 @@ export function GridContent1 ({data, day, dayForecastIndex, temp, func_f, func_c
                 !dayForecastIndex ? (temp ? data.current.temp_f : data.current.temp_c) : (temp ? data.forecast.forecastday[dayForecastIndex].day.avgtemp_f : data.forecast.forecastday[dayForecastIndex].day.avgtemp_c)
               }</span>
 
-              <span id="gc1-temperature-letter" className={`${temp ? "activated" : ""}`} onClick={func_f}> ºF</span>  
+              <span id="gc1-temperature-letter" className={`${temp ? "activated" : ""}`} onClick={temp_fHandler}> ºF</span>  
               <span id="gc1-temperature-letter"> | </span>  
-              <span id="gc1-temperature-letter" className={`${!temp ? "activated" : ""}`}onClick={func_c}>ºC</span>  
+              <span id="gc1-temperature-letter" className={`${!temp ? "activated" : ""}`}onClick={temp_cHandler}>ºC</span>  
             </div>
 
             <h3>
@@ -52,7 +53,7 @@ export function GridContent1 ({data, day, dayForecastIndex, temp, func_f, func_c
                   <img src="../../icons/calendar.png" alt="" />
                 </span>
                 <span id="gc1-hour">
-                  {!dayForecastIndex ? data.location.localtime : data.forecast.forecastday[dayForecastIndex].date}
+                  {formatDate}
                 </span>
               </div>
             </div>
@@ -83,10 +84,10 @@ export function GridContent2 ({data, temp_f, dayForecastIndex}) {
   )
 }
 
-export function GridContent4 ({data, day, forecastHandler, forecastDay, temp_f, dayForecastIndex, setDayForecastIndex}) {
-
+export function GridContent4 ({data, forecastHandler, forecastDay, temp_f, dayForecastIndex, setDayForecastIndex}) {
   return (
     handleData(data, () => {
+      const day = (data && data.current ? new Date(data.current.last_updated) : null);
       const weekTime = [day.getDay()];
       return(
         <section id="gc4-continer">
@@ -101,7 +102,6 @@ export function GridContent4 ({data, day, forecastHandler, forecastDay, temp_f, 
                   key = {Math.random()}
                   data = {arg}
                   temp_f= {temp_f}
-                  weekday = {weekday}
                   currentDay = {(parseInt(weekTime) + index) % 6 }
                   today= {(index === 0)}
                   setDayForecastIndex= {setDayForecastIndex}
@@ -128,9 +128,9 @@ export function GridContent5 ({data, locationHandler, countryCode, setLocation})
       <SearchBar setLocation= {setLocation}/>
       <div id="gc5-svg-map-container">
         <WorldMap
-          color="#000"
-          backgroundColor="#141414"
-          borderColor="white"
+          color="#000a"
+          backgroundColor="#0000"
+          borderColor="var(--text_color)"
           strokeOpacity={0.4}
           size="lg"
           richInteraction = {true}

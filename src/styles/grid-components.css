@@ -10,7 +10,7 @@
 }
 #gc1-container-temp hr {
   width: 100%;
-  border: 1px solid #fff1;
+  border: 1px solid var(--secondary_text_color);
 }
 #gc1-container-temp h3 {
   margin: 10px 0;
@@ -26,13 +26,13 @@
   font-size: 25px;
 }
 #gc1-temperature-letter{
-  color: #fff5;
+  color: var(--secondary_text_color);
   box-shadow: none;
   cursor: pointer;
 
 }
 .activated{
-  color: #fff !important;
+  color: var(--text_color) !important;
 }
 #gc1-footer-container{
   font-size: 14px;
@@ -84,18 +84,6 @@
 #gc5-container{
   position: relative;
 }
-#gc5-svg-map-container{
-  overflow: hidden;
-  max-height: 300px;
-  background-color: #141414;
-  display: flex;
-  justify-content: center;
-}
-#gc5-svg-map-container svg{
-  left: auto;
-  transform: translate(0px, -40px);
-  box-shadow: 0 0 10px 2px #fff1;
-}
 
 @media only screen and (max-width: 650px) {
   #gc1-container-temp{
@@ -134,6 +122,16 @@
   
   }
   #gc5-svg-map-container svg{
-    transform: translate(0px, 0px);
+    transform: translate(0px, 0px) scale(2);
   }
 }
+#gc5-svg-map-container{
+  overflow: hidden;
+  max-height: 300px;
+  display: flex;
+  justify-content: center;
+}
+#gc5-svg-map-container svg{
+  transform: translate(0px, -40px);
+}
+

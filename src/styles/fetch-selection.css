@@ -10,14 +10,14 @@
 #forecast_selection{
   border-radius: 10px;
   border-color: #575757;
-  color: #aaa;
-  background-color: #070707;
+  color: var(--secondary_text_color);
+  background-color: var(--body_background_color);
   padding: 2px 0px 2px 10px;
   transition-duration: 200ms;
   cursor: pointer;
 }
 #forecast_selection:hover{
-  background-color: #000;
+  background-color: var(--grid_background_color);
 }
 
 #search-bar-container{

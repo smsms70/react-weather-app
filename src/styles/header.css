@@ -1,5 +1,6 @@
 #header-page{
-  background-color: black;
+  background-color: #000;
+  color: #fff;
   height: 80px;
   width: 100vw;
   box-sizing: border-box;
@@ -9,11 +10,12 @@
 }
 #header-box-container{
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   gap: 5px;
   font-size: 22px;
   font-weight: 500;
-  justify-content: center;
 }
 #header-box-img-container{
   width: 40px;
@@ -22,4 +24,29 @@
 }
 #header-box-img-container img{
   width: 100%;
+}
+
+#theme-setter{
+  filter:invert(1);
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 8px;
+  position: absolute;
+  right: 10vw;
+  padding: 1px 4px;
+  display: flex;
+  cursor: pointer;
+}
+#theme-setter img{
+  width: 30px;
+}
+@media only screen and (max-width: 650px) {
+  #header-page{
+    gap: 1em;
+  }
+  #theme-setter{
+    position: relative;
+    right: auto;
+    margin: 10px;
+  }
 }

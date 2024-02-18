@@ -1,17 +1,28 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  font-weight: 400;
 
-  color: #F2F1EB;
-  background-color: #000;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  
+  --body_background_color: #0a0a0a;
+  --text_color: #fff;
+  --secondary_text_color: #999;
+  --grid_background_color:#3336;
+  --grid_boxes_color: #0008;
+  --loading_side: #121212;
 }
 
+[data-theme="light"] {  
+  --body_background_color: #e2e2e2;
+  --text_color: #000;
+  --secondary_text_color: #555;
+  --grid_background_color:#fff;
+  --grid_boxes_color: #aaa3;
+  --loading_side: #d1d1d1;
+}
+
+
 body {
+  background-color: var(--body_background_color);
+  color: var(--text_color);
   margin: 0;
   padding: 0;
   display: flex;

@@ -16,7 +16,7 @@
   margin-bottom: 200px;
 }
 .grid-component{
-  background: #3336;
+  background: var(--grid_background_color);
   border-radius: 15px;
   transition-duration: 300ms;
   box-sizing: border-box;
@@ -25,10 +25,6 @@
   min-width: 200px;
   height: auto;
   min-height: 270px;
-}
-.grid-1{
-  /* justify-content: space-between; */
-  /* min-height: 250px; */
 }
 .grid-2{
   justify-content: space-evenly;
@@ -66,8 +62,8 @@
 
 /* loading animation */
 .isLoading > .grid-component, .Loading {
-  background-color: black;
-  background: linear-gradient(110deg, #121212 8%, #0a0a0a 18%, #121212 33%);
+  background-color: var(--body_background_color);
+  background: linear-gradient(110deg, var(--loading_side) 8%, var(--body_background_color) 18%, var(--loading_side) 33%);
   background-size: 200% 100%;
   animation: 1s shine linear infinite;
 }

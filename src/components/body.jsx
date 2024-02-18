@@ -12,14 +12,6 @@ export default function BodyComponent () {
   const [countryCode, setCountryCode] = useState("");
   const [data, loading] = useFetch(location, forecastDays, justDays, setJustDays, setDayForecastIndex);
 
-  const currentDay = (data && data.current ? new Date(data.current.last_updated) : null);
-
-
-  const temp_fHandler = () => setTemp_f(true);
-  const temp_cHandler = () => setTemp_f(false);
-
-  const locationHandler = e => setLocation(e.target.value);
-
   const mapLocationHandler = e => {
     setLocation(e.countryName);
     setCountryCode(e.countryCode);
@@ -31,19 +23,15 @@ export default function BodyComponent () {
     setJustDays(true);
   };
 
-
-  console.log(loading, forecastDays, dayForecastIndex);
   return (
     <>
       <section id="body-components-container">
         <main id={`grid-container`} className = {loading ? 'isLoading' : ''}>
           <div className="grid-component grid-1">
             {!loading && <GridContent1 
-              data= {data} 
-              day= {currentDay}
+              data= {data}
               temp= {temp_f}
-              func_f= {temp_fHandler}
-              func_c= {temp_cHandler}
+              setTemp_f= {setTemp_f}
               dayForecastIndex= {dayForecastIndex}
             />}
           </div>
@@ -58,7 +46,6 @@ export default function BodyComponent () {
           <div className={`grid-component grid-4 ${justDays && "Loading"}`} >
             {!loading && !justDays && <GridContent4 
               data = {data} 
-              day = {currentDay} 
               forecastHandler={forecastDaysHandler}
               forecastDay = {forecastDays}
               temp_f= {temp_f}

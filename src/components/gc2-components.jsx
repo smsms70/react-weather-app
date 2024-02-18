@@ -5,13 +5,6 @@ import "../styles/gc2-main.css"
 export function Gc2Main ({data, temp_f, dayForecastIndex}) {
   const [selection, setSelection] = useState('')
 
-  const selectHumidityHandler = () => setSelection("humidity")
-  const selectwindHandler = () => setSelection("wind")
-  const selectuvHandler = () => setSelection("uv")
-  const selectfeelsHandler = () => setSelection("feels")
-  const selectreloadHandler = () => setSelection("")
-  
-
   return (
     <main id="gc2-main-container">
       
@@ -19,7 +12,7 @@ export function Gc2Main ({data, temp_f, dayForecastIndex}) {
           data= {data}
           selection= {selection}
           temp_f= {temp_f}
-          func= {selectreloadHandler}
+          setSelection={setSelection}
           dayForecastIndex= {dayForecastIndex}
         />
       
@@ -32,7 +25,8 @@ export function Gc2Main ({data, temp_f, dayForecastIndex}) {
           }
           img= {"../../icons/drop.png"}
           footer= {"%"}
-          func= {selectHumidityHandler}
+          funcNum= {0}
+          setSelection={setSelection}
           activated= {selection == "humidity"}
         />
         <DataBox
@@ -49,7 +43,8 @@ export function Gc2Main ({data, temp_f, dayForecastIndex}) {
           footer= {"Mh"}
           footer2= {"Kh"}
           temp_f= {temp_f}
-          func= {selectwindHandler}
+          funcNum= {1}
+          setSelection={setSelection}
           activated= {selection == "wind"}
         />
         <DataBox
@@ -59,7 +54,8 @@ export function Gc2Main ({data, temp_f, dayForecastIndex}) {
             data.forecast.forecastday[dayForecastIndex].day.uv
           }
           img= {""}
-          func= {selectuvHandler}
+          funcNum= {2}
+          setSelection={setSelection}
           activated= {selection == "uv"}
         />
         <DataBox
@@ -76,16 +72,23 @@ export function Gc2Main ({data, temp_f, dayForecastIndex}) {
           footer= {"ºF"}
           footer2= {"ºC"}
           temp_f= {temp_f}
-          func= {selectfeelsHandler}
+          funcNum= {3}
+          setSelection={setSelection}
           activated= {selection == "feels"}
         />
       </section>
     </main>
   )
 }
-export function DataBox ({name, data, data2, img, footer, footer2, func, activated, temp_f = false}) {
+export function DataBox ({name, data, data2, img, footer, footer2, funcNum, activated, temp_f = false, setSelection}) {
+
+  const selec = ["humidity", "wind", "uv", "feels"];
+
+  const selectionHandler = () => {
+    setSelection(selec[funcNum])
+  }
   return(
-    <div className={`specific-data-box ${activated ? "activated" : ""}`} onClick={func}>
+    <div className={`specific-data-box ${activated ? "activated" : ""}`} onClick={selectionHandler}>
       <span className="specific-data-name-holder">{name} </span>
       <div>
         <p className="specific-data-data">{Math.floor(!data2 ? data : temp_f ? data : data2)}</p>
@@ -97,10 +100,13 @@ export function DataBox ({name, data, data2, img, footer, footer2, func, activat
     </div>
   )
 }
-export function GraphicSection ({data, selection, temp_f, func, dayForecastIndex}) {
+
+
+export function GraphicSection ({data, selection, temp_f, dayForecastIndex, setSelection}) {
+  const handleSelection = () => setSelection("");
   return(
     <section id="gc2-graph-container">
-      <span id="reload-img-container" onClick={func} className={!selection ? "hidden" : ""}>
+      <span id="reload-img-container" onClick={handleSelection} className={!selection ? "hidden" : ""}>
         <img src="../../icons/reload.png" alt="" />
       </span>
       <div id="rules-container-gc2">
@@ -115,6 +121,7 @@ export function GraphicSection ({data, selection, temp_f, func, dayForecastIndex
                 selection == "uv" ? event.uv :
                 selection == "feels" ? (temp_f ? event.feelslike_f : event.feelslike_c ) : ""
               }
+              temp_f= {selection == "humidity" ? true : temp_f}
             />
           )
         })}
@@ -123,8 +130,13 @@ export function GraphicSection ({data, selection, temp_f, func, dayForecastIndex
   )
 }
 
-export function GraphRules ({size}) {
+export function GraphRules ({size, temp_f}) {
+  
+  const style = {
+    height: `${temp_f ? Math.abs(size) : Math.abs(size)*3}%`,
+    backgroundColor: (size > 0) ? "grey" : "#56c9ff"
+  }
   return(
-    <div className="ruler-from-gc2-graph" style={{height:`${size}%`}}></div>
+    <div className="ruler-from-gc2-graph" style={style}></div>
   )
 }

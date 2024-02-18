@@ -12,29 +12,30 @@
   gap: 10px;
 }
 .specific-data-box{
-  max-width: 200px;
+  background-color: var(--grid_boxes_color);
+  color: var(--secondary_text_color);
   width: 100%;
-  background-color: #0008;
-  border-radius: 10px;
+  max-width: 200px;
   height: 100px;
-  box-sizing: border-box;
+  border-radius: 10px;
   padding: 10px;
-  cursor: pointer;
-  transition-duration: 150ms;
-  color: #fff8;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition-duration: 150ms;
 }
 .specific-data-box:hover, .activated {
   transform: scale(1.05);
   box-shadow: 0px 0px 2px 1px #fff1;
-  color: #fff;
+  color: var(--text_color);
 }
 .specific-data-box:hover > .specific-data-img-container img{
   filter: brightness(100%);
 }
 .specific-data-name-holder{
   max-width: 150%;
+  text-wrap: nowrap
 }
 .specific-data-box div{
   display: flex;
@@ -62,7 +63,7 @@
   align-self: flex-end;
   margin-bottom: 5px;
   font-size: 12px;
-  color: #fff5;
+  color: var(--secondary_text_color);
   flex-grow: 1;
   text-align: right;
 }
@@ -77,8 +78,8 @@
   position: relative;
 }
 #rules-container-gc2{
+  background-color: var(--grid_boxes_color);
   border-radius: 15px;
-  background-color: #0008;
   display: flex;
   align-items: end;
   width: 100%;
@@ -87,7 +88,6 @@
 }
 .ruler-from-gc2-graph{
   width: 8px;
-  background-color: grey;
   margin: 0 5px;
   border-radius: 5px;
 }
@@ -98,7 +98,7 @@
   right: 5px;
   top: 5px;
   cursor: pointer;
-  background-color: #222;
+  background-color: var(--grid_background_color);
   padding: 5px;
   border-radius: 10px;
   display: grid;
