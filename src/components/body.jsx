@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import {useFetch} from "../config/useFetch";
 import { GridContent1, GridContent2, GridContent4, GridContent5 } from "./grid-components.jsx";
 import "../styles/body.css";
@@ -22,6 +22,25 @@ export default function BodyComponent () {
     setForecastDays(e.target.value);
     setJustDays(true);
   };
+
+  useEffect(() => {
+    function success(position) {
+      setLocation(position.coords.latitude + " " + position.coords.longitude)
+    }
+    function error(err) {
+      console.error("Error getting location:", err.message);
+      alert("since you denied the Web to get your location you have to manually set the parameters in the search bar or chose an ubication in the map")
+    }
+    
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(success, error);
+    } else {
+      console.log("Geolocation not supported by this browser.");
+    }  
+    
+  }, []);
+
+
 
   return (
     <>

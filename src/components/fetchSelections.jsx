@@ -42,9 +42,11 @@ export function LocationsMinSelection (value) {
 
 
 export function SearchBar ({setLocation}) {
+  const [counter, setCounter] = useState(0);
   const [value, setValue] = useState("");
+
   const handleSearch = () => {
-    if (value) { // Ensure value is not empty
+    if (value) { 
       setLocation(value);
     }
   };
@@ -53,6 +55,25 @@ export function SearchBar ({setLocation}) {
     if (e.key === 'Enter') {
       handleSearch();
     }
+  }
+  function success(position) {
+    setCounter(0);
+    setLocation(position.coords.latitude + " " + position.coords.longitude)
+  }
+  
+  function error(err) {
+    setCounter(prev => prev + 1);
+    if(counter >= 2) alert("Geolocation permission has been blocked as the user has dismissed the permission prompt several times. You can set manually the location on the map box!");
+    console.error("Error getting location:", err.message);
+  }
+
+  const handleCurrentLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(success, error);
+    } else {
+      console.log("Geolocation not supported by this browser.");
+    }
+    
   }
 
   return(
@@ -66,6 +87,9 @@ export function SearchBar ({setLocation}) {
       />
       <button id="search-bar-button" onClick={handleSearch}>
         <img src="../../icons/search.png" alt="" />
+      </button>
+      <button id="search-bar-current-position" onClick={handleCurrentLocation}>
+        <img src="../../icons/current-location.png" alt="Set current position"/>
       </button>
     </nav>
   )

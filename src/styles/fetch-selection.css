@@ -23,15 +23,16 @@
 #search-bar-container{
   position: absolute;
   display: flex;
-  width: 60%;
-  align-items: center;
+  width: 100%;
+  align-items: start;
   gap: 5px;
   z-index: 100;
 }
 #search-bar-bar{
   width: 70%;
+  max-width: 250px;
 }
-#search-bar-button{
+#search-bar-button, #search-bar-current-position{
   width: 25px;
   padding: 0;
   box-sizing: border-box;
@@ -47,9 +48,12 @@
   background-color: #333;
   transform: scale(1.1);
 }
-#search-bar-button img{
+#search-bar-button img, #search-bar-current-position img{
   width: 100%;
   filter:invert(1) brightness(50%);
 }
 
-
+#search-bar-current-position{
+  width: 40px;
+  margin-left: auto;
+}
