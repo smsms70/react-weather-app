@@ -1,11 +1,13 @@
 import {useState, useEffect } from 'react';
 import axios from "axios";
 
+const BASE_URL = import.meta.env.VITE_REACT_APP_BACKEND_URL;
+
 export function useFetch (location, days, justDays, setJustDays, setDayForecastIndex) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   
-  const URL2 = "http://localhost:8000/forecast";
+  const URL2 = `${BASE_URL}/forecast`;
   const params = { 
     location: location,
     days: days 
